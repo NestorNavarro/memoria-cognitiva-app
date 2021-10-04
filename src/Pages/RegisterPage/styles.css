@@ -1,0 +1,19 @@
+.register-wrapper {
+    padding: 30px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-content {
+    width: 500px;
+    height: 100%;
+    padding: 25px;
+}
+
+.register-register {
+    display: flex;
+    justify-content: space-between;
+}

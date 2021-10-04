@@ -1,13 +1,14 @@
 import React from "react";
+
+//Our importations
 import InfoTable from "../../Components/Dashboard/InfoTable";
 import ProfileChart from "../../Components/Dashboard/ProfileChart";
+import "./styles.css";
 
-import "./styles.css"
 const DashboardPage = () => {
     return (
         <div className="container">
-            <div className="card user-info mt-5 mb-3">
-
+            <div className="card user-info mt-3 mb-3">
                 <div>
                     <div className="content-group">
                         <h5>Nombre de usuario</h5>
@@ -20,8 +21,7 @@ const DashboardPage = () => {
                     <h5>Sexo</h5>
                     <h3>Masculino</h3>
                 </div>
-
-                    <ProfileChart />
+                <ProfileChart />
             </div>
             <InfoTable/>
         </div>

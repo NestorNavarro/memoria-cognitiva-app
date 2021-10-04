@@ -18,8 +18,8 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                <PrivateRoute exact path="/" isAuth={ isAuth } component={ DashboardRouter } />
-                    <PublicRoute path="/auth" isAuth={ isAuth } component={ AuthRouter } />
+                    <PrivateRoute path="/dashboard" isAuth={ isAuth } component={ DashboardRouter } />
+                    <PublicRoute  path="/auth" isAuth={ isAuth } component={ AuthRouter } />
                     <Redirect to="/auth/login" />
                 </Switch>
             </div>
