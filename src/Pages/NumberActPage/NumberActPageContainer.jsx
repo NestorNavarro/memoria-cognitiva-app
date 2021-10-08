@@ -3,9 +3,11 @@ import NumberActPage from "./NumberActPage.jsx";
 
 const NumberActPageContainer = () => {
     const [progress, setProgress]         = useState(0);
-    const [answer, setAnswer]             = useState("");
     const [ronunds, setRounds]            = useState(1);
+    const [answer, setAnswer]             = useState("");
     const [isLoading, setIsLoading]       = useState(true);
+    const [isCorrect, setIsCorrect]       = useState(true);
+    const [startGame, setStartGame]       = useState(false);
     const [randomNumber, setRandomNumber] = useState(Math.floor(Math.random() * 9));
 
     const getRandomNumberByLevel = (min, max) => {
@@ -14,11 +16,10 @@ const NumberActPageContainer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(Number(answer), randomNumber)
         if (Number(answer) === randomNumber) {
-            console.log("correct");
+            setRounds((value) => value + 1);
         } else {
-            console.log("incorrect");
+            setIsCorrect(false);
         }
         setAnswer("");
         const {min, max} = getNumber();
@@ -29,9 +30,9 @@ const NumberActPageContainer = () => {
     const getNumber = () => {
         let maxNumber = "1";
         let minNumber = "1";
-        for (let i=0;i<ronunds;i++) {
+        for (let i=0;i<=ronunds;i++) {
             maxNumber += "0";
-            if(i + 1 < ronunds) {
+            if(i + 1 <= ronunds) {
                 minNumber += "0";
             }
         }
@@ -41,8 +42,7 @@ const NumberActPageContainer = () => {
         };
     }
     useEffect(() => {
-        if (isLoading) {
-            setRounds((value) => value + 1);
+        if (isLoading && startGame) {
             const timer = setInterval(() => {
               setProgress((oldProgress) => {
                 if (oldProgress === 100) {
@@ -57,15 +57,19 @@ const NumberActPageContainer = () => {
                   clearInterval(timer);
                 };
         }
-      }, [isLoading]);
+      }, [isLoading, startGame]);
     return (
         <NumberActPage
             delegations={{
                 answer,
+                ronunds,
                 progress,
                 isLoading,
+                isCorrect,
+                startGame,
                 setAnswer,
                 randomNumber,
+                setStartGame,
                 handleSubmit,
             }}
         />
