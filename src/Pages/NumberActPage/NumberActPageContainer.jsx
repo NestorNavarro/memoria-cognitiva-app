@@ -53,9 +53,9 @@ const NumberActPageContainer = () => {
               });   
             }, 500);
             
-                return () => {
-                  clearInterval(timer);
-                };
+            return () => {
+            clearInterval(timer);
+            };
         }
       }, [isLoading, startGame]);
     return (
