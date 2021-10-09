@@ -20,24 +20,20 @@ const ShapesActPageContainer = () => {
 
     const sequence = (shape) => {
         setSequenceStack([...sequenceStack, shape]);
-        setAuxSquenceStack([...sequenceStack.reverse()]);
+        setAuxSquenceStack([...sequenceStack]);
     }
 
     const handleOnClick = ({ target }) => {
-        console.log(auxSquenceStack);
         const { id } = target;
-        const tempStack = auxSquenceStack;
-        const shape     = tempStack.pop();
 
-        if(shape !== Number(id)) {
+        if(sequenceStack[answare] !== Number(id)) {
             console.log("game over")
+            setAnsware(0);
             setIsDisabled(true);
             return;
         }
-
         const count = answare + 1;
         setAnsware(count);
-        setAuxSquenceStack([...tempStack]);
 
         if(count === sequenceStack.length) {
             setAnsware(0);
@@ -47,32 +43,28 @@ const ShapesActPageContainer = () => {
             return;
         }
     }
-    
 
+    const timer = ms => new Promise(res => setTimeout(res, ms));
+
+    const  sartShowSequence = async() => {
+        for (let i = 0; i < sequenceStack.length; i++) {
+            await timer(400);
+            setShapeFocus({
+                [sequenceStack[i]] : true,
+            });
+            await timer(600);
+            setShapeFocus({});
+        }
+        setShapeFocus({});
+        setIsDisabled(false);
+        setShowSequence(false);
+    }
 
     useEffect(() => {
         if(showSequence) {
-            if(auxSquenceStack.length > 0) {
-                const timer = setInterval(() => {   
-                    const tempStack = auxSquenceStack;
-                    const shape     = tempStack.pop();
-    
-                    setAuxSquenceStack([...tempStack]);
-                    setShapeFocus({
-                        [shape] : true,
-                    });
-                }, 1000);
-                return () => {
-                    clearInterval(timer);
-                }
-            } else {
-                setIsDisabled(false);
-                setShowSequence(false);
-                setAuxSquenceStack([...sequenceStack.reverse()]);
-                return;
-            }
-        }
-    }, [showSequence, auxSquenceStack, sequenceStack]);
+            sartShowSequence();
+        } 
+    }, [showSequence]);
 
     return (
         <ShapesActPage
