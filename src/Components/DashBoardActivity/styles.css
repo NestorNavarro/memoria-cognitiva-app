@@ -13,3 +13,10 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.instructions {
+    margin-top: 15px;
+    max-width: 80% !important;
+    color: rgb(160, 160, 160);
+
+}

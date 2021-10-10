@@ -2,33 +2,30 @@ import React, { useEffect, useState } from "react";
 
 import ShapesActPage from "./ShapesActPage";
 
-const shapes = ["square", "circle", "retancle", "oval"];
-
 const ShapesActPageContainer = () => {
 
     const getRandomShape = () => {
         return Math.floor(Math.random() * (4 - 0));
     }
-
     
+    const [answare, setAnsware]             = useState(0);
+    const [gameOver, setGameOver]       = useState(false);
     const [shapeFocus, setShapeFocus]       = useState({});
-    const [answare, setAnsware]                  = useState(0);
-    const [isDisabled, setIsDisabled]           = useState(true);
-    const [showSequence , setShowSequence]      = useState(true);
-    const [sequenceStack, setSequenceStack]     = useState([getRandomShape()]);
-    const [auxSquenceStack, setAuxSquenceStack] = useState([...sequenceStack]);
+    const [startGame, setStartGame]       = useState(false);
+    const [isDisabled, setIsDisabled]       = useState(true);
+    const [showSequence , setShowSequence]  = useState(true);
+    const [sequenceStack, setSequenceStack] = useState([getRandomShape()]);
 
     const sequence = (shape) => {
         setSequenceStack([...sequenceStack, shape]);
-        setAuxSquenceStack([...sequenceStack]);
     }
 
     const handleOnClick = ({ target }) => {
         const { id } = target;
 
         if(sequenceStack[answare] !== Number(id)) {
-            console.log("game over")
             setAnsware(0);
+            setGameOver(true);
             setIsDisabled(true);
             return;
         }
@@ -61,16 +58,21 @@ const ShapesActPageContainer = () => {
     }
 
     useEffect(() => {
-        if(showSequence) {
+        if(showSequence && startGame) {
             sartShowSequence();
         } 
-    }, [showSequence]);
+    }, [startGame, showSequence]);
 
     return (
         <ShapesActPage
             delegations={{
+                gameOver,
+                startGame,
                 shapeFocus,
                 isDisabled,
+                setGameOver,
+                setStartGame,
+                sequenceStack,
                 handleOnClick,
             }}
         />

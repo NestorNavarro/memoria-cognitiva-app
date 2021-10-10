@@ -2,9 +2,8 @@ import React from 'react'
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router';
 
-const GameOver = ({score, route}) => {
+const GameOver = ({score = 0, route = "/"}) => {
     const history = useHistory();
-    console.log(score)
     return (
         <div className="container">
             <div className="card card-content">

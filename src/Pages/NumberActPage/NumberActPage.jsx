@@ -6,6 +6,9 @@ import GameOver          from "../../Components/GameOver";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css"
 
+const testName    = "RECUERDA EL NÚMERO"
+const instructions = "Teclea los numeros que aparece en pantalla."
+
 const NumberActPage = ({
     delegations : {
         answer,
@@ -23,7 +26,7 @@ const NumberActPage = ({
     return (
         <>
         { !startGame ?
-            <DashBoardActivity activity="RECUERDA EL NÚMERO" setStartGame={setStartGame}/>
+            <DashBoardActivity activity={testName}  instructions={instructions} setStartGame={setStartGame}/>
             :
             (isCorrect ?
                 <form 
