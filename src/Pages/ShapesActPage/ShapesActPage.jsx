@@ -8,7 +8,7 @@ import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css";
 
 const testName     = "RECUERDA LA SECUENCIA DE FIGUARAS";
-const instructions = "Debes pulsar la figuara(s) en el orden que se iluminaron."
+const instructions = "SEQUENCE";
 const ShapesActPage = ({
     delegations : {
         gameOver,

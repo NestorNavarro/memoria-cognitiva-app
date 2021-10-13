@@ -7,7 +7,7 @@ import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css"
 
 const testName    = "RECUERDA EL NÚMERO"
-const instructions = "Teclea los numeros que aparece en pantalla."
+const instructions = "NUMBER"
 
 const NumberActPage = ({
     delegations : {

@@ -1,6 +1,5 @@
-import { Button } from '@mui/material';
 import React from 'react'
-import Carousel from '../ui/Carousel';
+import { Button } from '@mui/material';
 
 import "./styles.css";
 const DashBoardActivity = ({ 
@@ -13,7 +12,21 @@ const DashBoardActivity = ({
             <div className="container">
             <div className="card card-content">
                     <h1>{activity}</h1>
-                    <h3 className="instructions">{instructions}</h3>
+                    {instructions === "NUMBER" &&                    
+                        <h3 className="instructions">
+                        Mmoriza el número que aparece en pantalla. Después de 5 segunso el número desaparce y debes<br/>
+                        de escribirlo en la caja de texto.<br/><br/>
+                        Cada ronda que pasa se le  aumentara un digito al número que aparece en pantalla.<br/><br/>
+                        Al ingresar mal en número el juego se termina.<br/>
+                        </h3>
+                    }
+                    {instructions === "SEQUENCE" &&                    
+                        <h3 className="instructions">
+                        Memoriza la secuencia en la que se ilumina cada figura, después pulsa las figuras en el orden en el que se iluminaron.<br/><br/>
+                        En cada ronda la secuencia se volvera más larga.<br/><br/>
+                        Al equivocarse en el orden de la secuencia el juego se termina.<br/>
+                        </h3>
+                    }
                     <Button
                         className="mt-2"
                         variant="contained"
@@ -23,7 +36,6 @@ const DashBoardActivity = ({
                     </Button>
                 </div> 
             </div>
-            <Carousel />
         </>
     );
 }
