@@ -1,16 +1,16 @@
-import React from 'react'
 import { Button } from '@mui/material';
 
 import "./styles.css";
+
 const DashBoardActivity = ({ 
     activity = "",
     instructions = "",
-    setStartGame=()=>{}
+    setStartGame=()=>{},
 }) => {
     return (
         <>
             <div className="container">
-            <div className="card card-content">
+                <div className="card card-content">
                     <h1>{activity}</h1>
                     {instructions === "NUMBER" &&                    
                         <h3 className="instructions">

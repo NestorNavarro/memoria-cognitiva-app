@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+//My imports
 import NumberActPage from "./NumberActPage.jsx";
 
 const NumberActPageContainer = () => {
@@ -41,6 +43,7 @@ const NumberActPageContainer = () => {
             max : Number(maxNumber)
         };
     }
+
     useEffect(() => {
         if (isLoading && startGame) {
             const timer = setInterval(() => {
@@ -58,6 +61,7 @@ const NumberActPageContainer = () => {
             };
         }
       }, [isLoading, startGame]);
+
     return (
         <NumberActPage
             delegations={{

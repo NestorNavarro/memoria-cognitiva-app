@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import WordsActPage from "./WordsActPage.jsx";
+import WordsActPage            from "./WordsActPage.jsx";
 
 import words  from "../../resources/Data/words";
 
@@ -21,7 +21,7 @@ const WordsActPageContainer = () => {
             console.log("gameover");
             return;
         }
-        setRounds((value) => value + 1);
+        setRounds((prev) => prev + 1);
         getNextWord();
     };
 
@@ -33,9 +33,8 @@ const WordsActPageContainer = () => {
         const randomType =  Math.floor(Math.random() * (100));
     
         if(randomType % 2 === 0) {
-            console.log("new");
-            const index = getRandomNumber(newWords.length);
-            setWord( {
+            const index = getRandomNumber(newWords.length - 1);
+            setWord({
                 value : newWords[index],
                 type  : "new", 
             });
@@ -47,7 +46,7 @@ const WordsActPageContainer = () => {
             setExistingWords(existingWords);
         } else {
             console.log("repet");
-            const index = getRandomNumber(existingWords.length);
+            const index = getRandomNumber(existingWords.length - 1);
 
             console.log(existingWords[index]);
             setWord( {

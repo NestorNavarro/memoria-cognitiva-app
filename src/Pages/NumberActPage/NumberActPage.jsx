@@ -1,12 +1,12 @@
 import { TextField, Box, Button } from "@mui/material";
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress             from '@mui/material/LinearProgress';
 
 // Our Importations
 import GameOver          from "../../Components/GameOver";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css"
 
-const testName    = "RECUERDA EL NÚMERO"
+const testName     = "RECUERDA EL NÚMERO"
 const instructions = "NUMBER"
 
 const NumberActPage = ({

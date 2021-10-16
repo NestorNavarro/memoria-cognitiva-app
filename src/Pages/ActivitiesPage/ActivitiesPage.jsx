@@ -22,23 +22,23 @@ const ActivitiesPage = () => {
 
     return (
         <div className="container-buttons">
-        <div className="col-btn ">
-            <Btn
-                onClick={() => { history.push("/dashboard/number")}}
-            >
-                <IconText icon="fas fa-calculator" text="recuerda el número" />
-            </Btn>
-            <Btn
-                   onClick={() => { history.push("/dashboard/shapes")}}
-            >
-                <IconText icon="fas fa-shapes" text="Recuerda la secuencia de las figuras" />
-            </Btn>
-            <Btn
-                onClick={() => { history.push("/dashboard/memory_game")}}
-            >
-                <IconText icon="fas fa-clone" text="Memorama" />
-            </Btn>
-        </div>
+            <div className="col-btn ">
+                <Btn
+                    onClick={() => { history.push("/dashboard/number")}}
+                >
+                    <IconText icon="fas fa-calculator" text="recuerda el número" />
+                </Btn>
+                <Btn
+                    onClick={() => { history.push("/dashboard/shapes")}}
+                >
+                    <IconText icon="fas fa-shapes" text="Recuerda la secuencia de las figuras" />
+                </Btn>
+                <Btn
+                    onClick={() => { history.push("/dashboard/memory_game")}}
+                >
+                    <IconText icon="fas fa-clone" text="Memorama" />
+                </Btn>
+            </div>
         <div className="col-btn mt-4">
             <Btn
                    onClick={() => { history.push("/dashboard/words")}}

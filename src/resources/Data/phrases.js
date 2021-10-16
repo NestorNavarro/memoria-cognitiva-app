@@ -1,5 +1,8 @@
 const phrases = [
-    "Blanco _______",
+    { 
+        phrase : "Blanco _______",
+        answer : "negro",
+    }
 ];
 
 export default phrases;
