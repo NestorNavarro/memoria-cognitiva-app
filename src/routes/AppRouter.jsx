@@ -11,6 +11,7 @@ import { PublicRoute }  from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { DashboardRouter } from "./DashboardRouter";
 
+//dev
 export const AppRouter = () => {
     const [isAuth, setIsAuth] = useState(true);
 
