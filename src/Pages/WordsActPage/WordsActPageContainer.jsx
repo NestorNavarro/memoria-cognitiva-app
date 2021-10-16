@@ -3,6 +3,8 @@ import WordsActPage            from "./WordsActPage.jsx";
 
 import words  from "../../resources/Data/words";
 
+console.log("hola");
+
 const WordsActPageContainer = () => {
     const [ronunds, setRounds]              = useState(1);
     const [existingWords, setExistingWords] = useState([]);
