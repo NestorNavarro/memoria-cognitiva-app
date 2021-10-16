@@ -1,1 +1,1 @@
-export { default } from "./WordsActPage.jsx";
+export { default } from "./WordsActPageContainer.jsx";

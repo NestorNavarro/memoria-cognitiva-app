@@ -9,6 +9,7 @@ import "./styles.css";
 
 const testName     = "RECUERDA LA SECUENCIA DE FIGUARAS";
 const instructions = "SEQUENCE";
+
 const ShapesActPage = ({
     delegations : {
         gameOver,
@@ -30,7 +31,7 @@ const ShapesActPage = ({
                 :
                 <div className="container">
                     <div className="card card-content">
-                        <h1>Ronda: { sequenceStack.length }</h1>
+                        <h3>Ronda: { sequenceStack.length }</h3>
                         <div className="row-shapes">
                                 <ButtonBase
                                     id="0"

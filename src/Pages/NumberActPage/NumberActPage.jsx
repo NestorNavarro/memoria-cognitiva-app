@@ -1,4 +1,4 @@
-import { TextField, Box } from "@mui/material";
+import { TextField, Box, Button } from "@mui/material";
 import LinearProgress from '@mui/material/LinearProgress';
 
 // Our Importations
@@ -55,6 +55,12 @@ const NumberActPage = ({
                                         width : "250px",
                                     }}
                                 />
+                                <Button
+                                    className="mt-2"
+                                    onClick={handleSubmit}
+                                >
+                                    Responder
+                                </Button>
                             </>
                         }
                     </div>
