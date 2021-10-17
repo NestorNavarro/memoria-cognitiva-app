@@ -27,6 +27,14 @@ const DashBoardActivity = ({
                         Al equivocarse en el orden de la secuencia el juego se termina.<br/>
                         </h3>
                     }
+                    {instructions === "WORDS" &&
+                        <h3 className="instructions">
+                            Memoriza las palabras que aparecerán en pantalla. 
+                            Después selecciona si la palabra es una nueva palabra o es una palabra que ya había aparecido previamente.<br/><br/>
+                            Cada nueva palabra aumenta la dificultad porque el conjunto de palabras a recordar se vuelve más grande.<br/><br/>
+                            El juego termina cuando no se elige la opción correcta.
+                        </h3>
+                    }
                     <Button
                         className="mt-2"
                         variant="contained"

@@ -3,12 +3,11 @@ import WordsActPage            from "./WordsActPage.jsx";
 
 import words  from "../../resources/Data/words";
 
-console.log("hola");
-
 const WordsActPageContainer = () => {
     const [ronunds, setRounds]              = useState(1);
     const [existingWords, setExistingWords] = useState([]);
     const [isCorrect, setIsCorrect]         = useState(true);
+    const [startGame, setStartGame]         = useState(false);
     const [newWords, setNewWords]           = useState(words);
     const [word, setWord]                   = useState({
         value : "",
@@ -17,10 +16,8 @@ const WordsActPageContainer = () => {
 
     const validateAnswer = (typeAnsware = "") => {
         const { type } = word;
-        console.log(existingWords);
         if (type !== typeAnsware) {
             setIsCorrect(false);
-            console.log("gameover");
             return;
         }
         setRounds((prev) => prev + 1);
@@ -36,6 +33,7 @@ const WordsActPageContainer = () => {
     
         if(randomType % 2 === 0) {
             const index = getRandomNumber(newWords.length - 1);
+            const value = newWords[index];
             setWord({
                 value : newWords[index],
                 type  : "new", 
@@ -44,13 +42,11 @@ const WordsActPageContainer = () => {
             newWords.splice(index, 1);
             setNewWords(newWords);
 
-            existingWords.push(word.value);
+            existingWords.push(value);
             setExistingWords(existingWords);
         } else {
-            console.log("repet");
             const index = getRandomNumber(existingWords.length - 1);
 
-            console.log(existingWords[index]);
             setWord( {
                 value : existingWords[index],
                 type  : "repet", 
@@ -82,7 +78,10 @@ const WordsActPageContainer = () => {
             delegations={{
                 word,
                 ronunds,
+                startGame,
                 isCorrect,
+                setIsCorrect,
+                setStartGame,
                 validateAnswer,
             }}
         />
