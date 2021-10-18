@@ -1,26 +1,9 @@
-import React from "react";
+import { useSelector } from "react-redux";
 
 import NoteEntry from "../NoteEntry";
 
 const NotesEntries = () => {
-    const notes = [
-        {
-            title : "Hola",
-            body :  "este es un texto para la nota"
-        },
-        {
-            title : "Hola",
-            body :  "este es un texto para la nota"
-        },
-        {
-            title : "Hola",
-            body :  "este es un texto para la nota"
-        },
-        {
-            title : "Hola",
-            body :  "este es un texto para la nota"
-        }
-    ];
+    const {notes} = useSelector(state => state?.note ?? []);
 
     return (
         <div className="row row-cols-1 row-cols-md-3 g-4">

@@ -1,8 +1,16 @@
 import { Button, TextField } from '@mui/material';
-import React from 'react';
+
 import "./styles.css";
 
-const Modal = () => {
+const Modal = ({
+    delegations : {
+        body,
+        title, 
+        handleClose,
+        handleSubmit,
+        handleInputChange,
+    },
+}) => {
 
     return (
         <div className="modal__container">
@@ -14,31 +22,33 @@ const Modal = () => {
                     </div>
                     <i 
                         className="fas fa-times modal__close"
-                        // onClick={handleClose}
+                        onClick={handleClose}
                     />
                 </div>
 
                 <div className="modal__content">
                     <form 
-                        // onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
                         <TextField
                             className="mb-5"
                             name="title"
                             variant="filled"
+                            value={title}
                             autoComplete="off"
                             label="Ingresa el título"
+                             onChange={handleInputChange}
                         />
                         <TextField
                             rows={4}
                             fullWidth 
                             multiline
                             name="body"
-                            // value={body}
+                            value={body}
                             variant="filled"
                             autoComplete="off"
                             label="Cuerpo de la nota"
-                            // onChange={handleInputChange}
+                            onChange={handleInputChange}
                         />
                         <hr />
                         <Button
