@@ -6,12 +6,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import { useHistory } from 'react-router';
 
 const InfoTable = ({
     delegations : {
         rows,
     }
 }) => {
+    const history = useHistory();
     return (
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -35,10 +37,10 @@ const InfoTable = ({
                 <TableCell align="right">{row?.average}</TableCell>
                 <TableCell align="right">{row?.bestScore}</TableCell>
                 <TableCell align="right">
-                    <Button 
+                    <Button
+                        onClick={ () => history.push(`/dashboard/detailsTest/${row?.name}`) }
                         size="small"
                     >
-                        {/* TODO : Redirect to a graphic */}
                         Ver 
                     </Button>
                 </TableCell>

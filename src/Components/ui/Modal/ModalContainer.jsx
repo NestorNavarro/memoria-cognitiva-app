@@ -16,7 +16,7 @@ const ModalContainer = () => {
 
     const [ formValue, handleInputChange ] = useForm({
         title :   edit?.title ?? "",
-        body  :    edit?.body ?? "",
+        body  :   edit?.body  ?? "",
     });
 
     const {title, body} = formValue;
@@ -47,13 +47,6 @@ const ModalContainer = () => {
         }
         return true;
     };
-
-    // useEffect(() => {
-    //     if(edit?.title){
-    //         defaultValues.title = edit.title;
-    //         defaultValues.body  = edit.body;
-    //     }
-    // }, [edit?.title, edit?.body, defaultValues]);
 
     return (
         <Modal

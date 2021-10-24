@@ -1,8 +1,15 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const ProfileChart = () => {
-
+const ProfileChart = ({
+    test: {
+        cartsTest,
+        numbersTest,
+        shapesTest,
+        wordsTest,
+        phrasesTest,
+    },
+}) => {
     const radarColors = "#1a73e8";
 	const colorLabel =  "#353535";
 
@@ -78,11 +85,11 @@ const ProfileChart = () => {
 		{
 			name : "Origen",
 			data : [
-				0,
-                2,
-                5,
-                3,
-                4,
+				cartsTest.average,
+                numbersTest.average,
+                shapesTest.average,
+                wordsTest.average,
+                phrasesTest.average,
             ],
 		},
 	];

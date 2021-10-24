@@ -13,16 +13,18 @@ import {
 
 
 import { uiReducer }    from "./Reducers/uiReducer";
+import { authReducer } from "./Reducers/authReducer";
+import { testReducer } from "./Reducers/testReducer";
 import { noteReducers } from "./Reducers/noteReducer";
-// import { authReducers } from "../Reducers/authReducers";
 
 const composeEnhancers = (typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 
 const reducers = combineReducers({
-    // auth: authReducers,
-    ui: uiReducer,
-    note: noteReducers,
+    auth : authReducer,
+    test : testReducer,
+    ui   : uiReducer,
+    note : noteReducers,
 });
 
 const persistConfig = {

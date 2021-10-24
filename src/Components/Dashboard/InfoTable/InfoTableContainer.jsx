@@ -1,16 +1,24 @@
 import InfoTable from "./InfoTable";
 
-export const InfoTableContainer = () => {
+export const InfoTableContainer = ({
+    test: {
+        cartsTest,
+        numbersTest,
+        shapesTest,
+        wordsTest,
+        phrasesTest,
+    },
+}) => {
     const createData = (name, average, bestScore) => {
         return { name, average, bestScore};
     }
       
     const rows = [
-        createData('Emparejamiento de cartas', 159, 233),
-        createData('Recuerda los números', 237, 232),
-        createData('Recuerda la secuencia de las figuras', 262, 2323),
-        createData('Recuerda las palabras', 305, 2323),
-        createData('Completa la frase', 356, 232),
+        createData('Emparejamiento de cartas', cartsTest.average, cartsTest.bestScore),
+        createData('Recuerda los números', numbersTest.average, numbersTest.bestScore),
+        createData('Recuerda la secuencia de las figuras', shapesTest.average, shapesTest.bestScore),
+        createData('Recuerda las palabras', wordsTest.average, wordsTest.bestScore),
+        createData('Completa la frase', phrasesTest.average, phrasesTest.bestScore),
     ];
     return (
         <InfoTable 

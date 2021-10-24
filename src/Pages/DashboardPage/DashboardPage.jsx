@@ -5,25 +5,32 @@ import InfoTable from "../../Components/Dashboard/InfoTable";
 import ProfileChart from "../../Components/Dashboard/ProfileChart";
 import "./styles.css";
 
-const DashboardPage = () => {
+const DashboardPage = ({  
+    auth :{
+        name,
+        age,
+        sex,
+    }, 
+    test,
+}) => {
     return (
         <div className="container">
             <div className="card user-info mt-3 mb-3">
                 <div>
                     <div className="content-group">
                         <h5>Nombre de usuario</h5>
-                        <h3>Nestor Eduardo Navarro Arizaga</h3>
+                        <h3>{name}</h3>
                     </div>
                     <div className="content-group">
                         <h5>Edad</h5>
-                        <h3>24 años</h3>
+                        <h3>{age} años</h3>
                     </div>
                     <h5>Sexo</h5>
-                    <h3>Masculino</h3>
+                    <h3>{sex}</h3>
                 </div>
-                <ProfileChart />
+                <ProfileChart test={test} />
             </div>
-            <InfoTable/>
+            <InfoTable test={test} />
         </div>
     );
 }

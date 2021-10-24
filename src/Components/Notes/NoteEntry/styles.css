@@ -11,9 +11,11 @@
 }
 
 .notes__entry-title {
+    max-width: 70%;
+    height: 20px;
+    overflow:hidden;
     font-size: 14px;
     font-weight: bold;
-    
 }
 
 .notes__head-icons {
