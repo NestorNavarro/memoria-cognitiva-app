@@ -46,12 +46,12 @@ const ActivitiesPage = () => {
                 <IconText icon="fas fa-sort-alpha-up" text="Recuerda las palabras" />
             </Btn>
             <Btn
-                onClick={() => { history.push("/dashboard/phrase")}}
+                     onClick={() => { history.push("/dashboard/phrase")}}
             >
                 <IconText icon="fas fa-feather-alt" text="Completa la frase" />
             </Btn>
             <Btn
-                onClick={() => { history.push("/dashboard/notes")}}
+                onClick={() => { }}
             >
                 <IconText icon="fas fa-book" text="Tu diario" />
             </Btn>

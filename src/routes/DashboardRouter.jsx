@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 
 //Our Importations
-import NotesPage      from "../Pages/NotesPage";
 import WordsActPage   from "../Pages/WordsActPage";
 import PhraseActPage  from "../Pages/PhraseActPage";
 import NumberActPage  from "../Pages/NumberActPage";
@@ -26,8 +25,7 @@ export const DashboardRouter = (props) => {
                 <Route exact path="/dashboard/shapes"      component={ShapesActPage}  {...props}/>
                 <Route exact path="/dashboard/phrase"      component={PhraseActPage}  {...props}/>
                 <Route exact path="/dashboard/memory_game" component={MemoryGamePage} {...props}/>
-                <Route exact path="/dashboard/notes"       component={NotesPage}      {...props}/>
-                
+
                 <Route exact path="/dashboard/porfile"     component={DashboardPage}  {...props}/>
                 <Route exact path="/dashboard/activities"  component={ActivitiesPage} {...props}/>
 
