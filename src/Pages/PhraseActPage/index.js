@@ -1,1 +1,1 @@
-export { default } from "./PhraseActPageContainer.jsx";
+export { default } from "./PhraseActPage.jsx";
