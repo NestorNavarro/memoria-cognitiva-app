@@ -1,0 +1,22 @@
+.container-buttons {
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapper-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    gap: 30px;
+}
+
+.col-btn {
+    display:  flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
