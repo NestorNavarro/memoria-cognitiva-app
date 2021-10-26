@@ -37,6 +37,7 @@ const LoginPage = ({
                         onChange={handleLoginInputChange}
                     />
                     <Button
+                        type="submit"
                         onClick={handleLogin}
                         className="mt-4"
                         variant="contained" 

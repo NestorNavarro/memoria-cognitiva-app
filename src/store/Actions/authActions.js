@@ -10,13 +10,11 @@ import {
 
 export const startLogin = (email, password) => {
     return async(dispatch) => {
-        const rep = await fetchWithOutToken('auth', {email, password}, 'POST');
+        const rep  = await fetchWithOutToken('auth', {email, password}, 'POST');
         const body = await rep.json();
 
-        
-        if(body.ok) {
+        if(body?.ok) {
             setLoginData(body, dispatch);
-
         } else {
             let error;
             if(body?.errors) {
@@ -29,22 +27,29 @@ export const startLogin = (email, password) => {
     }
 }
 
-export const startRegister = (email, password, name) => {
+export const startRegister = (email, password, name, age, sex) => {
     return async(dispatch) => {
-        const rep = await fetchWithOutToken('auth/new', {name, email, password}, 'POST');
+        const rep  = await fetchWithOutToken('auth/new', {name, email, password, age, sex}, 'POST');
         const body = await rep.json();
 
-        if(body.ok) {
+        if(body?.ok) {
             setLoginData(body, dispatch);
         } else {
-            if(body.msg) {
+            if(body?.msg) {
                 return Swal.fire('Error', body.msg, 'error');
             } else {
                 const { errors } = body;
-                if(errors.email) {
+
+                if(errors?.email) {
                     return Swal.fire('Error', errors.email.msg, 'error');
-                }  
-                return Swal.fire('Error', errors.password.msg, 'error');
+                } else if (errors?.name) {
+                    return Swal.fire('Error', errors.name.msg, 'error');
+                } else if (errors?.age) {
+                    return Swal.fire('Error', errors.age.msg, 'error');
+                } else if (errors?.sex) {
+                    return Swal.fire('Error', errors.sex.msg, 'error');
+                }
+                return  Swal.fire('Error', errors.msg, 'error');
             }
         }
     }
