@@ -10,60 +10,72 @@ import {
 
 export const startLogin = (email, password) => {
     return async(dispatch) => {
-        const rep  = await fetchWithOutToken('auth', {email, password}, 'POST');
-        const body = await rep.json();
-
-        if(body?.ok) {
-            setLoginData(body, dispatch);
-        } else {
-            let error;
-            if(body?.errors) {
-                error = !!body?.errors?.email ? body?.errors?.email.msg : body?.errors?.password.msg;
+        try {
+            const rep  = await fetchWithOutToken('auth', {email, password}, 'POST');
+            const body = await rep.json();
+    
+            if(body?.ok) {
+                setLoginData(body, dispatch);
             } else {
-                error = body.msg;
+                let error;
+                if(body?.errors) {
+                    error = !!body?.errors?.email ? body?.errors?.email.msg : body?.errors?.password.msg;
+                } else {
+                    error = body.msg;
+                }
+                Swal.fire('Error', error, 'error');
             }
-            Swal.fire('Error', error, 'error');
+        } catch (error) {
+            console.log(error);
         }
     }
 }
 
 export const startRegister = (email, password, name, age, sex) => {
     return async(dispatch) => {
-        const rep  = await fetchWithOutToken('auth/new', {name, email, password, age, sex}, 'POST');
-        const body = await rep.json();
-
-        if(body?.ok) {
-            setLoginData(body, dispatch);
-        } else {
-            if(body?.msg) {
-                return Swal.fire('Error', body.msg, 'error');
+        try {
+            const rep  = await fetchWithOutToken('auth/new', {name, email, password, age, sex}, 'POST');
+            const body = await rep.json();
+    
+            if(body?.ok) {
+                setLoginData(body, dispatch);
             } else {
-                const { errors } = body;
-
-                if(errors?.email) {
-                    return Swal.fire('Error', errors.email.msg, 'error');
-                } else if (errors?.name) {
-                    return Swal.fire('Error', errors.name.msg, 'error');
-                } else if (errors?.age) {
-                    return Swal.fire('Error', errors.age.msg, 'error');
-                } else if (errors?.sex) {
-                    return Swal.fire('Error', errors.sex.msg, 'error');
+                if(body?.msg) {
+                    return Swal.fire('Error', body.msg, 'error');
+                } else {
+                    const { errors } = body;
+    
+                    if(errors?.email) {
+                        return Swal.fire('Error', errors.email.msg, 'error');
+                    } else if (errors?.name) {
+                        return Swal.fire('Error', errors.name.msg, 'error');
+                    } else if (errors?.age) {
+                        return Swal.fire('Error', errors.age.msg, 'error');
+                    } else if (errors?.sex) {
+                        return Swal.fire('Error', errors.sex.msg, 'error');
+                    }
+                    return  Swal.fire('Error', errors.msg, 'error');
                 }
-                return  Swal.fire('Error', errors.msg, 'error');
             }
+        } catch (error) {
+            console.log(error);
         }
     }
 }
 
 export const startChecking = () => {
     return async(dispatch) => {
-        const rep  = await fetchWithToken('auth/renew');
-        const body = await rep.json();
-
-        if(body?.ok) {
-            setLoginData(body, dispatch);
-        } else {
-            dispatch( checkingFinish() );  
+        try {
+            const rep  = await fetchWithToken('auth/renew');
+            const body = await rep.json();
+    
+            if(body?.ok) {
+                setLoginData(body, dispatch);
+            } else {
+                dispatch( checkingFinish() );  
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 }
