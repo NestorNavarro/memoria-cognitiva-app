@@ -1,0 +1,94 @@
+import Swal from "sweetalert2";
+
+import { types } from "../types";
+import Base64 from "../../helpers/Base64";
+import {
+    fetchWithToken,
+    fetchWithOutToken, 
+} from "../../helpers/fetch";
+
+
+export const startLogin = (email, password) => {
+    return async(dispatch) => {
+        const rep = await fetchWithOutToken('auth', {email, password}, 'POST');
+        const body = await rep.json();
+
+        
+        if(body.ok) {
+            setLoginData(body, dispatch);
+
+        } else {
+            let error;
+            if(body?.errors) {
+                error = !!body?.errors?.email ? body?.errors?.email.msg : body?.errors?.password.msg;
+            } else {
+                error = body.msg;
+            }
+            Swal.fire('Error', error, 'error');
+        }
+    }
+}
+
+export const startRegister = (email, password, name) => {
+    return async(dispatch) => {
+        const rep = await fetchWithOutToken('auth/new', {name, email, password}, 'POST');
+        const body = await rep.json();
+
+        if(body.ok) {
+            setLoginData(body, dispatch);
+        } else {
+            if(body.msg) {
+                return Swal.fire('Error', body.msg, 'error');
+            } else {
+                const { errors } = body;
+                if(errors.email) {
+                    return Swal.fire('Error', errors.email.msg, 'error');
+                }  
+                return Swal.fire('Error', errors.password.msg, 'error');
+            }
+        }
+    }
+}
+
+export const startChecking = () => {
+    return async(dispatch) => {
+        const rep  = await fetchWithToken('auth/renew');
+        const body = await rep.json();
+
+        if(body?.ok) {
+            setLoginData(body, dispatch);
+        } else {
+            dispatch( checkingFinish() );  
+        }
+    }
+}
+
+const checkingFinish = () =>( { type: types.authCheckingFinish } );
+
+const login = (user) => ({
+    type: types.authLogin,
+    payload: user,
+});
+
+export const startLogout = () => {
+    return (dispatch) => {
+        localStorage.clear();
+        dispatch(logout());
+    }
+}
+
+const logout = () => ({ type: types.authLogout });
+
+const setLoginData = (body, dispatch) => {
+    localStorage.setItem('token', body.token);
+    localStorage.setItem('token-init-date', new Date().getTime());
+
+    const payload = JSON.parse(Base64.decode(body.token.split(".")[1]));
+
+    dispatch( login({
+        uid  : payload._id,
+        name : payload.name,
+        sex  : payload.sex,
+        age  : payload.age,
+    }));
+}

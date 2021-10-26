@@ -1,18 +1,22 @@
 export const types = {
     //Auth
-    authLoading: '[auth] Loading',
+    authLogout: '[auth] Logout',
+    authLogin: '[auth] authLogin',
     authSetData: '[auth] SetData',
-    authClearData: '[auth] ClearData',
+    authStartLogin: '[auth] Start login',
+    authStartRegister: '[auth] StartRegister',
+    authStartTokenRenew: '[auth] StartTokenRenew',
+    authCheckingFinish: '[auth] Finish chicking login state',
 
     //Test
     testSetData: '[test] SetData',
     testClearData: '[test] ClearData',
     
     //Ui
-    uiStartLoading: '[ui] StartLoading',
-    uiFinishLoading: '[ui] FinishLoading',
     uiShowModal: '[ui] ShowModal',
     uiCloseModal: '[ui] CloseModal',
+    uiStartLoading: '[ui] StartLoading',
+    uiFinishLoading: '[ui] FinishLoading',
 
     //Notes
     noteAddNew: '[note] Add new note',

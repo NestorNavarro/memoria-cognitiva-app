@@ -4,9 +4,16 @@ import {TextField, Button} from '@mui/material';
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-const LoginPage = () => {
+const LoginPage = ({
+    delegations :{
+        lEmail,
+        lPassword,
+        handleLogin,
+        handleLoginInputChange,
+    }
+}) => {
     return (
-            <div className="login-wrapper">
+            <form onSubmit={handleLogin} className="login-wrapper">
                 <div className="card login-content">
                     <h2 className="text-center">Iniciar sesión</h2>
                     <TextField 
@@ -14,14 +21,23 @@ const LoginPage = () => {
                         type="email" 
                         label="Correo" 
                         variant="filled"
+                        autoComplete="off"
+                        name="lEmail"
+                        value={lEmail}
+                        onChange={handleLoginInputChange}
                     />
                     <TextField 
                         className="mt-4"
                         type="password" 
                         label="Contraseña" 
                         variant="filled"
+                        autoComplete="off"
+                        name="lPassword"
+                        value={lPassword}
+                        onChange={handleLoginInputChange}
                     />
-                    <Button 
+                    <Button
+                        onClick={handleLogin}
                         className="mt-4"
                         variant="contained" 
                         size="large"
@@ -35,7 +51,7 @@ const LoginPage = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </form>
     );
 }
 

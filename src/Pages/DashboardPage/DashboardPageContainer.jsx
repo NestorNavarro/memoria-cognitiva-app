@@ -7,7 +7,7 @@ const DashboardPageContainer = () => {
 
     return (
         <DashboardPage 
-            auth={auth}
+            auth={auth.userInfo}
             test={test}
         />
     );
