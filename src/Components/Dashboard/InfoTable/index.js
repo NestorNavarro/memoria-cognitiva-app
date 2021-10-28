@@ -1,1 +1,1 @@
-export { default } from "./InfoTableContainer";
+export { default } from "./InfoTableContainer.jsx";

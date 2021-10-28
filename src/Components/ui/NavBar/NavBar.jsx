@@ -5,8 +5,17 @@ import {
   Toolbar, 
   Typography, 
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+
+import { startLogout } from "../../../store/Actions/authActions";
 
 const NavBar = ({ history }) => {
+   const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch( startLogout() );
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -25,7 +34,12 @@ const NavBar = ({ history }) => {
                 Ejercicios
               </Button>
             </Typography>
-            <Button color="inherit">Salir</Button>
+            <Button 
+              color="inherit"
+              onClick={handleLogout}
+            >
+              Salir
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>
