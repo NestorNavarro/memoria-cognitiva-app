@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-import ShapesActPage from "./ShapesActPage";
+import ShapesActPage   from "./ShapesActPage";
+import { getInfoTest } from "../../store/Services/statisticsServices";
 
 const ShapesActPageContainer = () => {
+    const { userInfo } = useSelector(state => state.auth)
 
     const getRandomShape = () => {
         return Math.floor(Math.random() * (4 - 0));
@@ -27,6 +30,7 @@ const ShapesActPageContainer = () => {
             setAnsware(0);
             setGameOver(true);
             setIsDisabled(true);
+            getInfoTest("figures" , userInfo.uid, sequenceStack.length - 1);
             return;
         }
         const count = answare + 1;

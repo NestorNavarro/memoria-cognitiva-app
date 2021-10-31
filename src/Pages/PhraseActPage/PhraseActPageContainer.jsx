@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import PhraseActPage from "./PhraseActPage.jsx";
-import phrases       from "../../resources/Data/phrases"
+import { useSelector }     from "react-redux";
+
+
+import PhraseActPage   from "./PhraseActPage.jsx";
+import phrases         from "../../resources/Data/phrases"
+import { getInfoTest } from "../../store/Services/statisticsServices.js";
 
 const PharseActPageContainer = () => {
+    const { userInfo } = useSelector(state => state.auth);
+
     const newPhrase                             = phrases;
     const [ronunds, setRounds]                  = useState(1);
     const [answerOne, setAnswerOne]             = useState("");
@@ -23,6 +29,7 @@ const PharseActPageContainer = () => {
             setRounds((value) => value + 1);
         } else {
             setIsCorrect(false);
+            getInfoTest("phrases" , userInfo.uid, ronunds-1);
         }
 
         setAnswerOne("");

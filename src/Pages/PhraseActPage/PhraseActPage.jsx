@@ -5,8 +5,8 @@ import GameOver             from "../../Components/GameOver";
 import DashBoardActivity    from "../../Components/DashBoardActivity";
 import "./styles.css"
 
-const testName    = "COMPLETA LA FRASE"
-const instructions = "Ingresa el texto correcto."
+const testName    = "COMPLETA LA FRASE";
+const instructions = "PHRASE";
 
 const PhraseActPage = ({
     delegations : {

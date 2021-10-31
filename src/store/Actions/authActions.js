@@ -80,6 +80,24 @@ export const startChecking = () => {
     }
 }
 
+export const getInfoTest = (type, id, score = 0) => {
+    return async (dispatch) => {
+        try {
+            const rep  = await fetchWithToken(`statistics/${type}/${id}`, {score}, "POST");
+            const body = await rep.json();
+    
+            if(body?.ok) {
+                
+            } else {
+                Swal.fire("Error", "Algo salio mal" , "error");
+            }
+        
+        } catch (error) {
+            console.log("[Auth Services] getInfoTest", error);
+        }
+    }
+}
+
 const checkingFinish = () =>( { type: types.authCheckingFinish } );
 
 const login = (user) => ({
@@ -107,5 +125,10 @@ const setLoginData = (body, dispatch) => {
         name : payload.name,
         sex  : payload.sex,
         age  : payload.age,
+        cardTest    : body.cardTest,
+        figureTest  : body.figureTest,
+        numberTest  : body.numberTest,
+        phrasesTest : body.phrasesTest,
+        wordsTest   : body.wordsTest,
     }));
 }

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getInfoTest } from "../../store/Services/statisticsServices.js";
 
 //My imports
 import NumberActPage from "./NumberActPage.jsx";
 
 const NumberActPageContainer = () => {
+    const auth = useSelector(state => state.auth)
+
     const [progress, setProgress]         = useState(0);
     const [ronunds, setRounds]            = useState(1);
     const [answer, setAnswer]             = useState("");
@@ -21,7 +25,9 @@ const NumberActPageContainer = () => {
         if (Number(answer) === randomNumber) {
             setRounds((value) => value + 1);
         } else {
+            const { userInfo  } = auth;
             setIsCorrect(false);
+            getInfoTest("numbers" , userInfo.uid, ronunds);
         }
         setAnswer("");
         const {min, max} = getNumber();

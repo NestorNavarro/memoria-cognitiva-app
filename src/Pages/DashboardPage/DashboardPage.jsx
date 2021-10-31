@@ -6,12 +6,7 @@ import ProfileChart from "../../Components/Dashboard/ProfileChart";
 import "./styles.css";
 
 const DashboardPage = ({  
-    auth :{
-        name,
-        age,
-        sex,
-    }, 
-    test,
+    auth,
 }) => {
     return (
         <div className="container">
@@ -19,18 +14,18 @@ const DashboardPage = ({
                 <div>
                     <div className="content-group">
                         <h5>Nombre de usuario</h5>
-                        <h3>{name}</h3>
+                        <h3>{auth.name}</h3>
                     </div>
                     <div className="content-group">
                         <h5>Edad</h5>
-                        <h3>{age} años</h3>
+                        <h3>{auth.age} años</h3>
                     </div>
                     <h5>Sexo</h5>
-                    <h3>{sex}</h3>
+                    <h3>{auth.sex}</h3>
                 </div>
-                <ProfileChart test={test} />
+                <ProfileChart auth={auth} />
             </div>
-            <InfoTable test={test} />
+            <InfoTable auth={auth} />
         </div>
     );
 }

@@ -1,13 +1,12 @@
-import { Button } from "@mui/material";
-
 // Our Importations
 import GameOver from "../../Components/GameOver";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import Board from "../../Components/Board/Board";
 import "./styles.css";
 
-const testName = "Memorama";
-const instructions = "Relaciona las imágenes.";
+
+const testName     = "MEMORAMA";
+const instructions = "MEMORYGAME";
 
 const MemoryGamePage = ({
     delegations: {

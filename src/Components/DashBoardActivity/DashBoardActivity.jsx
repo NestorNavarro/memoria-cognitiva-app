@@ -35,6 +35,19 @@ const DashBoardActivity = ({
                             El juego termina cuando no se elige la opción correcta.
                         </h5>
                     }
+                    {instructions === "MEMORYGAME" &&
+                        <h5 className="instructions">
+                            Se muestran una serie de cartas las cuales están asociadas a una pareja. Se debera emparejar cada carta con su repectiva pareja.<br/><br/>
+                            El juego termina cuando se termine de emparajar todas las cartas.
+                        </h5>
+                    }
+                    {instructions === "PHRASE" &&
+                        <h5 className="instructions">
+                            Se muestra una frase común con dos espacios en blanco los cuales debes ingresar en el cuadro de texto correspondiente para completar la frase.<br/><br/>
+                            Existen 20 frases para completar.<br/><br/>
+                            El juego termina cuando completas mal la frase o adivinas las 20 frases.
+                        </h5>
+                    }
                     <Button
                         className="mt-2"
                         variant="contained"

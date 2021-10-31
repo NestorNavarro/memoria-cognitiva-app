@@ -6,8 +6,8 @@ import GameOver          from "../../Components/GameOver";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css"
 
-const testName     = "RECUERDA EL NÚMERO"
-const instructions = "NUMBER"
+const testName     = "RECUERDA EL NÚMERO";
+const instructions = "NUMBER";
 
 const NumberActPage = ({
     delegations : {

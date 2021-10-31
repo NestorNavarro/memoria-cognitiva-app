@@ -1,11 +1,11 @@
 import InfoTable from "./InfoTable";
 
 export const InfoTableContainer = ({
-    test: {
-        cartsTest,
-        numbersTest,
-        shapesTest,
+    auth: {
+        cardTest,
         wordsTest,
+        figureTest,
+        numberTest,
         phrasesTest,
     },
 }) => {
@@ -14,11 +14,11 @@ export const InfoTableContainer = ({
     }
       
     const rows = [
-        createData('Emparejamiento de cartas', cartsTest.average, cartsTest.bestScore),
-        createData('Recuerda los números', numbersTest.average, numbersTest.bestScore),
-        createData('Recuerda la secuencia de las figuras', shapesTest.average, shapesTest.bestScore),
-        createData('Recuerda las palabras', wordsTest.average, wordsTest.bestScore),
-        createData('Completa la frase', phrasesTest.average, phrasesTest.bestScore),
+        createData('Emparejamiento de cartas', cardTest.average.toFixed(1), cardTest.best),
+        createData('Recuerda los números', numberTest.average.toFixed(1), numberTest.best),
+        createData('Recuerda la secuencia de las figuras', figureTest.average.toFixed(1), figureTest.best),
+        createData('Recuerda las palabras', wordsTest.average.toFixed(1), wordsTest.best),
+        createData('Completa la frase', phrasesTest.average.toFixed(1), phrasesTest.best),
     ];
     return (
         <InfoTable 
