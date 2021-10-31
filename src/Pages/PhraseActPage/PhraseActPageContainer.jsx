@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { useSelector }     from "react-redux";
+import React, { useState }          from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 
 import PhraseActPage   from "./PhraseActPage.jsx";
 import phrases         from "../../resources/Data/phrases"
-import { getInfoTest } from "../../store/Services/statisticsServices.js";
+import { saveInfoTest } from "../../store/Actions/authActions";
+
 
 const PharseActPageContainer = () => {
     const { userInfo } = useSelector(state => state.auth);
+    const dispatch     = useDispatch();
 
     const newPhrase                             = phrases;
     const [ronunds, setRounds]                  = useState(1);
@@ -29,7 +31,8 @@ const PharseActPageContainer = () => {
             setRounds((value) => value + 1);
         } else {
             setIsCorrect(false);
-            getInfoTest("phrases" , userInfo.uid, ronunds-1);
+            dispatch(saveInfoTest("phrases" , userInfo.uid, ronunds-1));
+            
         }
 
         setAnswerOne("");

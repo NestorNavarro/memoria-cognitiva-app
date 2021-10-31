@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useSelector }         from "react-redux";
-import WordsActPage            from "./WordsActPage.jsx";
+import { useDispatch, useSelector }         from "react-redux";
 
-import words           from "../../resources/Data/words";
-import { getInfoTest } from "../../store/Services/statisticsServices.js";
+import WordsActPage     from "./WordsActPage.jsx";
+import words            from "../../resources/Data/words";
+import { saveInfoTest } from "../../store/Actions/authActions";
+
 
 const WordsActPageContainer = () => {
     const { userInfo } = useSelector(state => state.auth);
+    const dispatch     = useDispatch();
 
     const [ronunds, setRounds]              = useState(1);
     const [existingWords, setExistingWords] = useState([]);
@@ -22,7 +24,7 @@ const WordsActPageContainer = () => {
         const { type } = word;
         if (type !== typeAnsware) {
             setIsCorrect(false);
-            getInfoTest("words" , userInfo.uid, ronunds-1);
+            dispatch(saveInfoTest("words" , userInfo.uid, ronunds-1));
             return;
         }
         setRounds((prev) => prev + 1);

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector }                from "react-redux";
+import { useDispatch, useSelector }   from "react-redux";
 
 import MemoryGamePage      from './MemoryGamePage.jsx';
-import { getInfoTest }     from "../../store/Services/statisticsServices.js";
+import { saveInfoTest } from "../../store/Actions/authActions.js";
 
 const MemoryGamePageContainer = () => {
     const { userInfo } = useSelector(state => state.auth)
+    const dispatch     = useDispatch();
 
     const [attemps, setAttemps]                         = useState(1);
     const [accerts, setAccerts]                         = useState(1);
@@ -56,7 +57,8 @@ const MemoryGamePageContainer = () => {
             setAccerts(accerts + 1);
             if(accerts === emojiList.length) {
                 setHaveCards(false);
-                getInfoTest("cards" , userInfo.uid, attemps);
+                dispatch( saveInfoTest("cards" , userInfo.uid, attemps) );
+               
             }
         } else {
             setAttemps(attemps + 1);

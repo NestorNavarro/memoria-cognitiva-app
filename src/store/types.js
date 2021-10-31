@@ -7,10 +7,7 @@ export const types = {
     authStartRegister: '[auth] StartRegister',
     authStartTokenRenew: '[auth] StartTokenRenew',
     authCheckingFinish: '[auth] Finish chicking login state',
-
-    //Test
-    testSetData: '[test] SetData',
-    testClearData: '[test] ClearData',
+    authSaveSinglaTestData: '[auth] SaveSingleData',
     
     //Ui
     uiShowModal: '[ui] ShowModal',

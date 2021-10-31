@@ -80,24 +80,6 @@ export const startChecking = () => {
     }
 }
 
-export const getInfoTest = (type, id, score = 0) => {
-    return async (dispatch) => {
-        try {
-            const rep  = await fetchWithToken(`statistics/${type}/${id}`, {score}, "POST");
-            const body = await rep.json();
-    
-            if(body?.ok) {
-                
-            } else {
-                Swal.fire("Error", "Algo salio mal" , "error");
-            }
-        
-        } catch (error) {
-            console.log("[Auth Services] getInfoTest", error);
-        }
-    }
-}
-
 const checkingFinish = () =>( { type: types.authCheckingFinish } );
 
 const login = (user) => ({
@@ -125,10 +107,40 @@ const setLoginData = (body, dispatch) => {
         name : payload.name,
         sex  : payload.sex,
         age  : payload.age,
-        cardTest    : body.cardTest,
-        figureTest  : body.figureTest,
-        numberTest  : body.numberTest,
-        phrasesTest : body.phrasesTest,
         wordsTest   : body.wordsTest,
+        cardsTest   : body.cardsTest,
+        figuresTest : body.figuresTest,
+        numbersTest : body.numbersTest,
+        phrasesTest : body.phrasesTest,
     }));
 }
+
+
+export const saveInfoTest = (type, id, score = 0) => {
+    return async (dispatch) => {
+        try {
+            const rep  = await fetchWithToken(`statistics/${type}/${id}`, { score }, "POST");
+            const body = await rep.json();
+
+            if(body.ok) {
+                const key       = `${type}Test`
+                const dataToSave = body[key];
+                dispatch(saveSingleTestData(key, dataToSave));
+            } else {
+                Swal.fire("Error", "Algo salio mal" , "error");
+            }
+        } catch (error) {
+            console.log("[Auth Actions] saveInfoTest", error);
+        }
+    }
+};
+
+const saveSingleTestData = (key = "", data = {}) => ({
+    type    : types.authSaveSinglaTestData,
+    payload : {
+        test : key,
+        data : {
+            ...data,
+        },
+    },
+});

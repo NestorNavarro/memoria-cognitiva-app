@@ -3,10 +3,10 @@ import Chart from "react-apexcharts";
 
 const ProfileChart = ({
     auth: {
-        cardTest,
+        cardsTest,
         wordsTest,
-        numberTest,
-        figureTest,
+        numbersTest,
+        figuresTest,
         phrasesTest,
     },
 }) => {
@@ -85,9 +85,9 @@ const ProfileChart = ({
 		{
 			name : "Origen",
 			data : [
-				cardTest.average,
-                numberTest.average,
-                figureTest.average,
+				cardsTest.average,
+                numbersTest.average,
+                figuresTest.average,
                 wordsTest.average,
                 phrasesTest.average,
             ],

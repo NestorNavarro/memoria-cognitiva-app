@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getInfoTest } from "../../store/Services/statisticsServices.js";
+import { useDispatch, useSelector }   from "react-redux";
 
 //My imports
-import NumberActPage from "./NumberActPage.jsx";
+import NumberActPage    from "./NumberActPage.jsx";
+import { saveInfoTest } from "../../store/Actions/authActions.js";
 
 const NumberActPageContainer = () => {
-    const auth = useSelector(state => state.auth)
+    const auth     = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     const [progress, setProgress]         = useState(0);
     const [ronunds, setRounds]            = useState(1);
@@ -27,7 +28,7 @@ const NumberActPageContainer = () => {
         } else {
             const { userInfo  } = auth;
             setIsCorrect(false);
-            getInfoTest("numbers" , userInfo.uid, ronunds);
+            dispatch(saveInfoTest("numbers" , userInfo.uid, ronunds));
         }
         setAnswer("");
         const {min, max} = getNumber();

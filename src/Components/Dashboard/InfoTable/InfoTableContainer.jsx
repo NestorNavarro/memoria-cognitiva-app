@@ -2,10 +2,10 @@ import InfoTable from "./InfoTable";
 
 export const InfoTableContainer = ({
     auth: {
-        cardTest,
+        cardsTest,
         wordsTest,
-        figureTest,
-        numberTest,
+        figuresTest,
+        numbersTest,
         phrasesTest,
     },
 }) => {
@@ -14,9 +14,9 @@ export const InfoTableContainer = ({
     }
       
     const rows = [
-        createData('Emparejamiento de cartas', cardTest.average.toFixed(1), cardTest.best),
-        createData('Recuerda los números', numberTest.average.toFixed(1), numberTest.best),
-        createData('Recuerda la secuencia de las figuras', figureTest.average.toFixed(1), figureTest.best),
+        createData('Emparejamiento de cartas', cardsTest.average.toFixed(1), cardsTest.best),
+        createData('Recuerda los números', numbersTest.average.toFixed(1), numbersTest.best),
+        createData('Recuerda la secuencia de las figuras', figuresTest.average.toFixed(1), figuresTest.best),
         createData('Recuerda las palabras', wordsTest.average.toFixed(1), wordsTest.best),
         createData('Completa la frase', phrasesTest.average.toFixed(1), phrasesTest.best),
     ];

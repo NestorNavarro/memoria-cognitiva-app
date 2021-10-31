@@ -21,6 +21,16 @@ export const authReducer = (state = initialState, action ) => {
             return {
                 checking: false,
             }
+        case types.authSaveSinglaTestData :
+            return {
+                ...state,
+                userInfo : {   
+                    ...state.userInfo,
+                    [action.payload.test] : {
+                        ...action.payload.data,
+                    },
+                }
+            }
         default:
             return state;
     };
