@@ -1,20 +1,23 @@
 import { useDispatch } from "react-redux";
 import { showModal }            from "../../../store/Actions/uiActions";
-import { deleteNote, editNote } from "../../../store/Actions/noteActions";
+import { deleteNoteService, editNote } from "../../../store/Actions/noteActions";
 
 import "./styles.css";
 
-const NoteEntry = ({ 
-    note = {},
+const NoteEntry = ({
+    id,
+    item : {
+        note,
+    }
 }) => {
     const dispatch = useDispatch();
 
     const handleEditNote = () => {
-        dispatch( editNote(note?.title, note?.body) );
+        dispatch( editNote(note?.title, note?.body, id) );
         dispatch( showModal() );
     }
     const handleDelete = () => {
-        dispatch( deleteNote(note?.title) );
+        dispatch( deleteNoteService(id) );
     }
     return (
         <div className="col">

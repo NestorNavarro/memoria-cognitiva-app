@@ -8,12 +8,14 @@ import {
 import { useDispatch } from "react-redux";
 
 import { startLogout } from "../../../store/Actions/authActions";
+import { cleaningNote } from "../../../store/Actions/noteActions";
 
 const NavBar = ({ history }) => {
    const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch( startLogout() );
+        dispatch(startLogout());
+        dispatch(cleaningNote());
     };
 
     return (

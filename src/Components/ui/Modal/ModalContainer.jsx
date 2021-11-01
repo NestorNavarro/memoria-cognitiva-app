@@ -4,8 +4,8 @@ import Modal                      from "./Modal.jsx";
 import useForm                    from "../../../hooks/useForm";
 import { closeModal }             from "../../../store/Actions/uiActions";
 import { 
-    addNewNote, 
-    updateNote,
+    createNote, 
+    updateNoteService,
     editNoteClean,
 } from "../../../store/Actions/noteActions";
 
@@ -24,11 +24,11 @@ const ModalContainer = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(edit) {
-            dispatch( updateNote(edit.title, title, body) );
+            dispatch( updateNoteService(title, body, edit._id) );
             handleClose();
         } else {
             if(isFormValid()){
-                dispatch( addNewNote(title, body) );
+                dispatch( createNote(title, body) );
                 handleClose();
             }
         }

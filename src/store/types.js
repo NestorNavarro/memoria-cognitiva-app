@@ -18,6 +18,7 @@ export const types = {
     //Notes
     noteAddNew: '[note] Add new note',
     noteEdit: '[note] Edit note',
+    noteSetNotes: '[note] Note setNotes',
     noteUpdate: '[note], Update note',
     noteEditClean: '[note] Edit note clean', 
     noteDelete: '[note] Delete note',
