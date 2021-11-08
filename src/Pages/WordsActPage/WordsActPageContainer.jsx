@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector }         from "react-redux";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useHistory } from "react-router";
+import { useEffect, useState }      from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import WordsActPage     from "./WordsActPage.jsx";
 import words            from "../../resources/Data/words";
@@ -7,12 +9,13 @@ import { saveInfoTest } from "../../store/Actions/authActions";
 
 
 const WordsActPageContainer = () => {
+    const history = useHistory();
+
     const { userInfo } = useSelector(state => state.auth);
     const dispatch     = useDispatch();
 
     const [ronunds, setRounds]              = useState(1);
     const [existingWords, setExistingWords] = useState([]);
-    const [isCorrect, setIsCorrect]         = useState(true);
     const [startGame, setStartGame]         = useState(false);
     const [newWords, setNewWords]           = useState(words);
     const [word, setWord]                   = useState({
@@ -20,11 +23,11 @@ const WordsActPageContainer = () => {
         type  : "",
     });
 
-    const validateAnswer = (typeAnsware = "") => {
+    const validateAnswer = async(typeAnsware = "") => {
         const { type } = word;
         if (type !== typeAnsware) {
-            setIsCorrect(false);
             dispatch(saveInfoTest("words" , userInfo.uid, ronunds-1));
+            history.replace(`/dashboard/gameover/words/${ronunds}`);
             return;
         }
         setRounds((prev) => prev + 1);
@@ -86,8 +89,6 @@ const WordsActPageContainer = () => {
                 word,
                 ronunds,
                 startGame,
-                isCorrect,
-                setIsCorrect,
                 setStartGame,
                 validateAnswer,
             }}

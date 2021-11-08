@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useHistory } from "react-router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector }   from "react-redux";
 
@@ -6,6 +8,8 @@ import { saveInfoTest } from "../../store/Actions/authActions";
 
 
 const ShapesActPageContainer = () => {
+    const history = useHistory();
+
     const { userInfo } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
@@ -14,7 +18,6 @@ const ShapesActPageContainer = () => {
     }
     
     const [answare, setAnsware]             = useState(0);
-    const [gameOver, setGameOver]       = useState(false);
     const [shapeFocus, setShapeFocus]       = useState({});
     const [startGame, setStartGame]       = useState(false);
     const [isDisabled, setIsDisabled]       = useState(true);
@@ -30,9 +33,9 @@ const ShapesActPageContainer = () => {
 
         if(sequenceStack[answare] !== Number(id)) {
             setAnsware(0);
-            setGameOver(true);
             setIsDisabled(true);
             dispatch(saveInfoTest("figures" , userInfo.uid, sequenceStack.length - 1));
+            history.replace(`/dashboard/gameover/shapes/${sequenceStack.length}`);
             return;
         }
         const count = answare + 1;
@@ -72,11 +75,9 @@ const ShapesActPageContainer = () => {
     return (
         <ShapesActPage
             delegations={{
-                gameOver,
                 startGame,
                 shapeFocus,
                 isDisabled,
-                setGameOver,
                 setStartGame,
                 sequenceStack,
                 handleOnClick,

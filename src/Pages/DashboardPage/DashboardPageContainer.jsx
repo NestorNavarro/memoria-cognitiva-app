@@ -4,7 +4,6 @@ import DashboardPage  from './DashboardPage';
 
 const DashboardPageContainer = () => {
     const { auth } = useSelector(state => state);
-
     return (
         <DashboardPage 
             auth={auth.userInfo}

@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import PhraseActPage   from "./PhraseActPage.jsx";
 import phrases         from "../../resources/Data/phrases"
 import { saveInfoTest } from "../../store/Actions/authActions";
+import { useHistory } from "react-router";
 
 
 const PharseActPageContainer = () => {
+    const history = useHistory();
+
     const { userInfo } = useSelector(state => state.auth);
     const dispatch     = useDispatch();
 
@@ -15,7 +18,6 @@ const PharseActPageContainer = () => {
     const [ronunds, setRounds]                  = useState(1);
     const [answerOne, setAnswerOne]             = useState("");
     const [answerTwo, setAnswerTwo]             = useState("");
-    const [isCorrect, setIsCorrect]             = useState(true);
     const [startGame, setStartGame]             = useState(false);
     const [randomNumber, setRandomNumber]       = useState(Math.floor(Math.random() * (0,20)));
     const [actualPhrase, setNewActualPhrase]    = useState(newPhrase[randomNumber]);
@@ -30,7 +32,7 @@ const PharseActPageContainer = () => {
         if(actualPhrase.answer_1 === answerOne.toString() && actualPhrase.answer_2 === answerTwo.toString()){
             setRounds((value) => value + 1);
         } else {
-            setIsCorrect(false);
+            history.replace(`/dashboard/gameover/phrase/${ronunds}`);
             dispatch(saveInfoTest("phrases" , userInfo.uid, ronunds-1));
             
         }
@@ -47,7 +49,6 @@ const PharseActPageContainer = () => {
                 ronunds,
                 answerOne,
                 answerTwo,
-                isCorrect,
                 startGame,
                 actualPhrase,
                 setAnswerOne,

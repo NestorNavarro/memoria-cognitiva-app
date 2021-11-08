@@ -8,6 +8,10 @@ export const types = {
     authStartTokenRenew: '[auth] StartTokenRenew',
     authCheckingFinish: '[auth] Finish chicking login state',
     authSaveSinglaTestData: '[auth] SaveSingleData',
+
+    //Statistics
+    statisticsSLR: '[statistics] SLR',
+    statisticsChart: '[statistics] Chart', 
     
     //Ui
     uiShowModal: '[ui] ShowModal',

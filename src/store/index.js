@@ -12,25 +12,25 @@ import {
 } from "redux";
 
 
-import { uiReducer }    from "./Reducers/uiReducer";
-import { authReducer } from "./Reducers/authReducer";
-import { testReducer } from "./Reducers/testReducer";
-import { noteReducers } from "./Reducers/noteReducer";
+import { uiReducer }         from "./Reducers/uiReducer";
+import { authReducer }       from "./Reducers/authReducer";
+import { noteReducers }      from "./Reducers/noteReducer";
+import { statisticsReducer } from "./Reducers/statisticsReducer";
 
 const composeEnhancers = (typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 
 const reducers = combineReducers({
-    auth : authReducer,
-    test : testReducer,
-    ui   : uiReducer,
-    note : noteReducers,
+    ui         : uiReducer,
+    auth       : authReducer,
+    note       : noteReducers,
+    statistics : statisticsReducer,
 });
 
 const persistConfig = {
     storage,
     key: "root",
-    whitelist: ["auth", "ui", "note"],
+    whitelist: ["auth", "ui", "note", "statistics"],
 }
    
 export const persistedReducer   = persistReducer(persistConfig, reducers);

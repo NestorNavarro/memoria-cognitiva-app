@@ -1,5 +1,5 @@
 import React, { useEffect }         from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,7 +13,7 @@ import { PrivateRoute }    from "./PrivateRoute";
 import { DashboardRouter } from "./DashboardRouter";
 import { startChecking }   from "../store/Actions/authActions";
 
-//dev
+
 export const AppRouter = () => {
     const dispatch = useDispatch();
     const {checking, userInfo} = useSelector(state => state.auth);

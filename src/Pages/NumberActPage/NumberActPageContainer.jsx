@@ -1,3 +1,4 @@
+import { useHistory } from "react-router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector }   from "react-redux";
 
@@ -6,6 +7,8 @@ import NumberActPage    from "./NumberActPage.jsx";
 import { saveInfoTest } from "../../store/Actions/authActions.js";
 
 const NumberActPageContainer = () => {
+    const history = useHistory();
+
     const auth     = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
@@ -13,7 +16,6 @@ const NumberActPageContainer = () => {
     const [ronunds, setRounds]            = useState(1);
     const [answer, setAnswer]             = useState("");
     const [isLoading, setIsLoading]       = useState(true);
-    const [isCorrect, setIsCorrect]       = useState(true);
     const [startGame, setStartGame]       = useState(false);
     const [randomNumber, setRandomNumber] = useState(Math.floor(Math.random() * 9));
 
@@ -27,7 +29,7 @@ const NumberActPageContainer = () => {
             setRounds((value) => value + 1);
         } else {
             const { userInfo  } = auth;
-            setIsCorrect(false);
+            history.replace(`/dashboard/gameover/number/${ronunds}`);
             dispatch(saveInfoTest("numbers" , userInfo.uid, ronunds));
         }
         setAnswer("");
@@ -76,7 +78,6 @@ const NumberActPageContainer = () => {
                 ronunds,
                 progress,
                 isLoading,
-                isCorrect,
                 startGame,
                 setAnswer,
                 randomNumber,

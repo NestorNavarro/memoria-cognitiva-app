@@ -1,5 +1,4 @@
 // Our Importations
-import GameOver from "../../Components/GameOver";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import Board from "../../Components/Board/Board";
 import "./styles.css";
@@ -12,7 +11,6 @@ const MemoryGamePage = ({
     delegations: {
         attemps,
         animating,
-        haveCards,
         startGame,
         setStartGame,
         handleMemoClick,
@@ -21,13 +19,13 @@ const MemoryGamePage = ({
 }) => {
     return (
         <>
-            {!startGame ? (
+            {!startGame ? 
                 <DashBoardActivity
                     activity={testName}
                     instructions={instructions}
                     setStartGame={setStartGame}
                 />
-            ) : haveCards ? (
+            :
                 <>
                     <h1 className="title">Errores : {attemps - 1}</h1>
                     <Board
@@ -36,9 +34,7 @@ const MemoryGamePage = ({
                         handleMemoClick={handleMemoClick}
                     />
                 </>
-            ) : (
-                <GameOver score={attemps} route="/dashboard/memory_game" />
-            )}
+            }
         </>
     );
 };

@@ -38,7 +38,7 @@ const InfoTable = ({
                 <TableCell align="right">{row?.bestScore}</TableCell>
                 <TableCell align="right">
                     <Button
-                        onClick={ () => history.push(`/dashboard/detailsTest/${row?.name}`) }
+                        onClick={ () => history.push(`/dashboard/detailsTest/${row?.type}`) }
                         size="small"
                     >
                         Ver 

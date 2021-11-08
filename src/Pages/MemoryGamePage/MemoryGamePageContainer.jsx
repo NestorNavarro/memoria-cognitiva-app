@@ -3,15 +3,17 @@ import { useDispatch, useSelector }   from "react-redux";
 
 import MemoryGamePage      from './MemoryGamePage.jsx';
 import { saveInfoTest } from "../../store/Actions/authActions.js";
+import { useHistory } from "react-router";
 
 const MemoryGamePageContainer = () => {
+    const history = useHistory();
+
     const { userInfo } = useSelector(state => state.auth)
     const dispatch     = useDispatch();
 
     const [attemps, setAttemps]                         = useState(1);
     const [accerts, setAccerts]                         = useState(1);
     const [startGame, setStartGame]                     = useState(false);
-    const [haveCards, setHaveCards]                     = useState(true);
     const [animating, setAnimating]                     = useState(false);
     const [selectedMemoBlock, setSelectedMemoblock]     = useState(null);
     const [shuffeldMemoBlocks, setShuffledMemoBlocks]   = useState([]);
@@ -56,7 +58,7 @@ const MemoryGamePageContainer = () => {
             setSelectedMemoblock(null);
             setAccerts(accerts + 1);
             if(accerts === emojiList.length) {
-                setHaveCards(false);
+                history.replace(`/dashboard/gameover/memory_game/${attemps}`);
                 dispatch( saveInfoTest("cards" , userInfo.uid, attemps) );
                
             }
@@ -80,7 +82,6 @@ const MemoryGamePageContainer = () => {
                 attemps,
                 animating,
                 startGame,
-                haveCards,
                 setStartGame,
                 handleMemoClick,
                 shuffeldMemoBlocks
