@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams }   from 'react-router';
 
 import DetailsTestPage from './DetailsTestPage';
 import { setSLR }      from '../../store/Actions/statisticsActions';
 
 const DetailsTestPageContainer = () => {
-    const { id }   = useParams();
+    const { id, average }   = useParams();
+    const {slr, chartData} = useSelector(state => state.statistics);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +18,9 @@ const DetailsTestPageContainer = () => {
     return (
         <DetailsTestPage 
             delegations={{
-                
+                slr, 
+                average,
+                chartData,
             }}
         />
     );

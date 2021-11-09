@@ -15,6 +15,7 @@ export const statisticsReducer = (state = initialState, action ) => {
         case types.statisticsChart :
             return {
                 ...state,
+                chartData : action.payload.data,
             }
         default:
             return state;

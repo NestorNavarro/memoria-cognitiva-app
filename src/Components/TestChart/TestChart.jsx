@@ -1,11 +1,12 @@
 import Chart from "react-apexcharts";
 
 const TestChart = ({ dataTest }) => {
+ 
   const options = {
     series: [
       {
         name: "Puntuación",
-        data: [36, 50, 48, 65, 55, 40, 30, 28, 7, 5, 1],
+        data: dataTest?.length > 0 ? dataTest : [],
       },
     ],
     options: {

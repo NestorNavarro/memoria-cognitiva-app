@@ -30,7 +30,7 @@ export const DashboardRouter = (props) => {
                 <Route exact path="/dashboard/memory_game" component={MemoryGamePage} {...props}/>
                 <Route exact path="/dashboard/notes"       component={NotesPage}      {...props}/>
 
-                <Route exact path="/dashboard/detailsTest/:id" component={DetailsTestPage} {...props}/>
+                <Route exact path="/dashboard/detailsTest/:id/:average" component={DetailsTestPage} {...props}/>
                 <Route exact path="/dashboard/porfile"         component={DashboardPage}   {...props}/>
                 <Route exact path="/dashboard/activities"      component={ActivitiesPage}  {...props}/>
 

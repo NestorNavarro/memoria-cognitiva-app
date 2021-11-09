@@ -12,22 +12,28 @@ export const setSLR = (test = "") => {
             const body = await rep.json();
 
             if (body.ok) {
-                const ages   = [];
-                const scores = [];
-                const data   = body.statistics
+                const ages      = [];
+                const scores    = [];
+                const data      = body.statistics
+                const n         = Math.round(data[data.length - 1][test].average);
+                const chartData = Array(n).fill(0);
 
-                for (let i=0;i<data.length;i++) {
-                    const { total } = data[i][test];
 
+                for (let i=0;i<data.length-1;i++) {
+                    const { total, average } = data[i][test];
+                    
                     if (total === 0) continue;
+
+                    const prev = chartData[Math.round(average)];
+                    chartData[Math.round(average)] = prev + 1;
 
                     ages.push(data[i].age);
                     scores.push(data[i][test].average);                    
                 }
                 
                 const result = buildSLR(age, ages, scores);
-                console.log(result);
 
+                dispatch(statisticsChart(chartData));
                 dispatch(setSlrAction(result));
             } else {
                 Swal.fire("Error", "No se puidieron cargar los datos correctamente" , "error");
@@ -41,6 +47,13 @@ export const setSLR = (test = "") => {
 
 const setSlrAction = data => ({
     type : types.statisticsSLR,
+    payload : {
+        data,
+    }
+});
+
+const statisticsChart = data => ({
+    type : types.statisticsChart,
     payload : {
         data,
     }
