@@ -1,7 +1,7 @@
 .register-wrapper {
     padding: 30px;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 
 .register-content {
     width: 500px;
-    height: 85%;
+    height: 100%;
     padding: 25px;
 }
 
@@ -17,3 +17,4 @@
     display: flex;
     justify-content: space-between;
 }
+

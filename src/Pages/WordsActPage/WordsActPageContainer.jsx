@@ -26,7 +26,7 @@ const WordsActPageContainer = () => {
     const validateAnswer = async(typeAnsware = "") => {
         const { type } = word;
         if (type !== typeAnsware) {
-            dispatch(saveInfoTest("words" , userInfo.uid, ronunds-1));
+            dispatch(saveInfoTest("words", userInfo.uid, ronunds-1));
             history.replace(`/dashboard/gameover/words/${ronunds}`);
             return;
         }

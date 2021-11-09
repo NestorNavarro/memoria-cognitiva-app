@@ -8,10 +8,6 @@ export const setSLR = (test = "") => {
     return async(dispatch, getState) => {
         try {
             const { userInfo : { age } } = getState().auth;
-            // const { userInfo } = getState().auth;
-            // const average = userInfo[`${test}Test`].average;
-
-
             const rep  = await fetchWithOutToken(`statistics/${test}`);
             const body = await rep.json();
 

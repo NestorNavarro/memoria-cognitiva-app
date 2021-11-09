@@ -30,7 +30,7 @@ const NumberActPageContainer = () => {
         } else {
             const { userInfo  } = auth;
             history.replace(`/dashboard/gameover/number/${ronunds}`);
-            dispatch(saveInfoTest("numbers" , userInfo.uid, ronunds));
+            dispatch(saveInfoTest("numbers" , userInfo.uid, ronunds-1));
         }
         setAnswer("");
         const {min, max} = getNumber();

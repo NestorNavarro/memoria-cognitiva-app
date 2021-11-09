@@ -1,6 +1,6 @@
 
 export const buildSLR = (x = 0, ages = [], scores = []) => {
-   return  getBeta0(ages.length, scores, ages) + getBeta1(ages.length, scores, ages) * x;
+   return  getBeta0(ages.length, ages, scores) + getBeta1(ages.length, ages, scores) * x;
 };
 
 const getBeta1 = (n = 0, x = [], y = []) => {

@@ -1,4 +1,16 @@
 .details-page-content {
-    
     padding: 20px;
+}
+
+.stadistics-content {
+    display: flex;
+    margin-top: 10px;
+    gap: 25px;
+}
+
+.body {
+    display: flex;
+    padding: 15px;
+    text-align: center;
+    flex-direction: column;
 }

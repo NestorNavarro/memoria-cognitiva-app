@@ -14,7 +14,11 @@ const DetailsTestPageContainer = () => {
     }, [dispatch, id]);
 
     return (
-        <DetailsTestPage />
+        <DetailsTestPage 
+            delegations={{
+                
+            }}
+        />
     );
 };
 export default DetailsTestPageContainer;

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector }   from "react-redux";
 
@@ -59,7 +60,7 @@ const MemoryGamePageContainer = () => {
             setAccerts(accerts + 1);
             if(accerts === emojiList.length) {
                 history.replace(`/dashboard/gameover/memory_game/${attemps}`);
-                dispatch( saveInfoTest("cards" , userInfo.uid, attemps) );
+                dispatch( saveInfoTest("cards" , userInfo.uid, attemps-1) );
                
             }
         } else {
