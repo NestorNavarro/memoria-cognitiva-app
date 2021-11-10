@@ -27,10 +27,11 @@ const PhraseActPage = ({
             :
             <form className="container">
                 <div className="card card-content">
-                    <h1 className="mt-5">{actualPhrase.phrase}</h1>
+                    <h2 className="mb-2">Ronda: {ronunds}</h2>
+                    <h1 className="mt-5">{actualPhrase?.phrase ?? ""}</h1>
                     <div className="buttons-group mt-4">
                         <TextField
-                            autoFocus = {true}
+                            autoFocus={true}
                             hiddenLabel
                             type="text"
                             variant="filled"
@@ -43,7 +44,6 @@ const PhraseActPage = ({
                         />
                             
                         <TextField 
-                            autoFocus = {true}
                             hiddenLabel
                             type="text"
                             variant="filled"
@@ -57,6 +57,7 @@ const PhraseActPage = ({
                         />
                     </div>
                     <Button
+                        type="submit"
                         className="mt-2"
                         onClick={handleSubmit}
                     >

@@ -14,33 +14,46 @@ const PharseActPageContainer = () => {
     const { userInfo } = useSelector(state => state.auth);
     const dispatch     = useDispatch();
 
-    const newPhrase                             = phrases;
-    const [ronunds, setRounds]                  = useState(1);
-    const [answerOne, setAnswerOne]             = useState("");
-    const [answerTwo, setAnswerTwo]             = useState("");
-    const [startGame, setStartGame]             = useState(false);
-    const [randomNumber, setRandomNumber]       = useState(Math.floor(Math.random() * (0,20)));
-    const [actualPhrase, setNewActualPhrase]    = useState(newPhrase[randomNumber]);
+    const [newPhrase, setnNwPhrase]          = useState(phrases);
+    const [ronunds, setRounds]               = useState(1);
+    const [answerOne, setAnswerOne]          = useState("");
+    const [answerTwo, setAnswerTwo]          = useState("");
+    const [startGame, setStartGame]          = useState(false);
+    const [randomNumber, setRandomNumber]    = useState(Math.floor(Math.random() * (0, phrases.length - 1)));
+    const [actualPhrase, setNewActualPhrase] = useState(newPhrase[randomNumber]);
 
     const getRandomNumberByLevel = (min, max) => {
         return Math.floor(Math.random() * (max - min) + min)
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        if(e?.preventDefault ) e.preventDefault();
 
+        // const tempRound = ronunds;
+        
         if(actualPhrase.answer_1 === answerOne.toString() && actualPhrase.answer_2 === answerTwo.toString()){
-            setRounds((value) => value + 1);
+            setRounds(ronunds + 1);
         } else {
             history.replace(`/dashboard/gameover/phrase/${ronunds}`);
             dispatch(saveInfoTest("phrases" , userInfo.uid, ronunds-1));
-            
+            return;
         }
+        const temp = [...newPhrase];
+        temp.splice(randomNumber, 1);
+
+        setnNwPhrase(temp);
+        console.log(temp);
 
         setAnswerOne("");
         setAnswerTwo("");
-        setRandomNumber(getRandomNumberByLevel(0,20));
-        setNewActualPhrase(newPhrase[randomNumber]);
+        setRandomNumber(getRandomNumberByLevel(0, temp.length -1));
+       
+        setNewActualPhrase(temp[randomNumber]);
+        if (temp.length === 0){ 
+            history.replace(`/dashboard/gameover/phrase/${ronunds + 1}`);
+            dispatch(saveInfoTest("phrases" , userInfo.uid, ronunds));
+            return;
+        }
     }
 
     return (
