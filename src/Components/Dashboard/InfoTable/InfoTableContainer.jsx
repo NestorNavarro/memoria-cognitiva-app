@@ -14,28 +14,33 @@ export const InfoTableContainer = ({
     }
       
     const rows = [
-        createData('Emparejamiento de cartas',
-         cardsTest.average.toFixed(1),
+        createData(
+        'Emparejamiento de cartas',
+         Math.round(cardsTest.average),
          cardsTest.best,
          "cards"),
 
-        createData('Recuerda los números',
-         numbersTest.average.toFixed(1),
+        createData(
+        'Recuerda los números',
+         Math.round(numbersTest.average),
          numbersTest.best,
          "numbers"),
 
-        createData('Recuerda la secuencia de las figuras',
-         figuresTest.average.toFixed(1),
+        createData(
+        'Recuerda la secuencia de las figuras',
+         Math.round(figuresTest.average),
          figuresTest.best,
          "figures"),
 
-        createData('Recuerda las palabras',
-         wordsTest.average.toFixed(1),
+        createData(
+        'Recuerda las palabras',
+         Math.round(wordsTest.average),
          wordsTest.best,
          "words"),
 
-        createData('Completa la frase',
-         phrasesTest.average.toFixed(1),
+        createData(
+        'Completa la frase',
+         Math.round(phrasesTest.average),
          phrasesTest.best,
          "phrases"),
     ];

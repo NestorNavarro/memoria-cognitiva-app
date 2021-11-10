@@ -19,13 +19,13 @@ export const setSLR = (test = "") => {
                 const chartData = Array(n).fill(0);
 
 
-                for (let i=0;i<data.length-1;i++) {
+                for (let i=0;i<data.length;i++) {
                     const { total, average } = data[i][test];
                     
-                    if (total === 0) continue;
+                    if (total === 0) continue
 
-                    const prev = chartData[Math.round(average)];
-                    chartData[Math.round(average)] = prev + 1;
+                    const prev = chartData[Math.round(average) - 1];
+                    chartData[Math.round(average) - 1] = prev + 1;
 
                     ages.push(data[i].age);
                     scores.push(data[i][test].average);                    
