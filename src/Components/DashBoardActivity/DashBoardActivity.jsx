@@ -14,10 +14,10 @@ const DashBoardActivity = ({
                     <h1>{activity}</h1>
                     {instructions === "NUMBER" &&                    
                         <h5 className="instructions">
-                        Mmoriza el número que aparece en pantalla. Después de 5 segunso el número desaparce y debes<br/>
+                        Memoriza el número que aparece en pantalla. Después de 5 segundos el número desaparce y debes<br/>
                         de escribirlo en la caja de texto.<br/><br/>
                         Cada ronda que pasa se le  aumentara un digito al número que aparece en pantalla.<br/><br/>
-                        Al ingresar mal en número el juego se termina.<br/>
+                        Al ingresar mal el número el juego se termina.<br/>
                         </h5>
                     }
                     {instructions === "SEQUENCE" &&                    
