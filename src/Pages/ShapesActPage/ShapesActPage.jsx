@@ -6,7 +6,7 @@ import {  ButtonBase } from "@mui/material";
 import DashBoardActivity from "../../Components/DashBoardActivity";
 import "./styles.css";
 
-const testName     = "RECUERDA LA SECUENCIA DE FIGUARAS";
+const testName     = "RECUERDA LA SECUENCIA DE FIGURAS";
 const instructions = "SEQUENCE";
 
 const ShapesActPage = ({
