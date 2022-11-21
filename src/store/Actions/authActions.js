@@ -107,11 +107,11 @@ const setLoginData = (body, dispatch) => {
         name : payload.name,
         sex  : payload.sex,
         age  : payload.age,
-        wordsTest   : body.wordsTest,
-        cardsTest   : body.cardsTest,
-        figuresTest : body.figuresTest,
-        numbersTest : body.numbersTest,
-        phrasesTest : body.phrasesTest,
+        wordsTest   : body?.wordsTest,
+        cardsTest   : body?.cardsTest,
+        figuresTest : body?.figuresTest,
+        numbersTest : body?.numbersTest,
+        phrasesTest : body?.phrasesTest,
     }));
 }
 

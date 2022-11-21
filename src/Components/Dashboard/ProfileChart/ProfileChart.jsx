@@ -1,6 +1,12 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
+const default_test = {
+    total : 5,
+    average : 1.22,
+    best : 10,
+};
+
 const ProfileChart = ({
     auth: {
         cardsTest,
@@ -85,11 +91,11 @@ const ProfileChart = ({
 		{
 			name : "Origen",
 			data : [
-				cardsTest.average,
-                numbersTest.average,
-                figuresTest.average,
-                wordsTest.average,
-                phrasesTest.average,
+				cardsTest?.average ?? default_test ,
+                numbersTest?.average ?? default_test,
+                figuresTest?.average ?? default_test,
+                wordsTest?.average ?? default_test,
+                phrasesTest?.average ?? default_test,
             ],
 		},
 	];

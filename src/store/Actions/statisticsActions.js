@@ -20,7 +20,13 @@ export const setSLR = (test = "") => {
 
 
                 for (let i=0;i<data.length;i++) {
-                    const { total, average } = data[i][test];
+
+                    if (data?.[i]?.[test] === undefined) {
+                        continue;
+                    }
+                    console.log(test, data[i][test])
+
+                    const { total = 0, average = 0 } = data[i][test];
                     
                     if (total === 0) continue
 
@@ -40,7 +46,7 @@ export const setSLR = (test = "") => {
             }
 
         } catch (error) {
-            console.log("Error on setSLR", error);
+            console.error("Error on setSLR", error);
         }
     };
 };
