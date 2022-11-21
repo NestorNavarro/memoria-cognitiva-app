@@ -10,6 +10,7 @@ export const setSLR = (test = "") => {
             const { userInfo : { age } } = getState().auth;
             const rep  = await fetchWithOutToken(`statistics/${test}`);
             const body = await rep.json();
+            console.log(body, rep)
 
             if (body.ok) {
                 const ages      = [];
@@ -18,13 +19,11 @@ export const setSLR = (test = "") => {
                 const n         = Math.round(data[data.length - 1][test].average);
                 const chartData = Array(n).fill(0);
 
-
                 for (let i=0;i<data.length;i++) {
 
                     if (data?.[i]?.[test] === undefined) {
                         continue;
                     }
-                    console.log(test, data[i][test])
 
                     const { total = 0, average = 0 } = data[i][test];
                     
